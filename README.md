@@ -1,4 +1,4 @@
 # NBA Dashboard
 
 ##  Dataset:
-> [player.csv](https://www.kaggle.com/datasets/sumitrodatta/nba-aba-baa-stats?select=Player+Totals.csv)
+`Player.csv`: [link](https://www.kaggle.com/datasets/sumitrodatta/nba-aba-baa-stats?select=Player+Totals.csv)

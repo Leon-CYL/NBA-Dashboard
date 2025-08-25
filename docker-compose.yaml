@@ -1,0 +1,46 @@
+# docker-compose.yml
+
+services:
+  db:
+    image: postgres:17
+    container_name: nba_db
+    environment:
+      POSTGRES_DB: nba
+      POSTGRES_USER: nba_user
+      POSTGRES_PASSWORD: nba_pass
+    ports:
+      - "3344:5432"             # host 3344 -> container 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./Data:/data            # optional: mount your CSVs for easy \copy
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nba_user -d nba"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./Backend
+    container_name: nba_backend
+    environment:
+      # Inside Docker, reach Postgres by its service name "db" on 5432
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/nba
+      SPRING_DATASOURCE_USERNAME: nba_user
+      SPRING_DATASOURCE_PASSWORD: nba_pass
+      SERVER_PORT: "8282"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8282:8282"
+
+  frontend:
+    build: ./Frontend
+    container_name: nba_frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"   # serves built React app via nginx on port 80
+
+volumes:
+  pgdata:

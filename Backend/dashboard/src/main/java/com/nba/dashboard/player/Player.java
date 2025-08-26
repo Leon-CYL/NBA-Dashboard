@@ -56,8 +56,8 @@ public class Player {
 
     // Per-game averages
     private float minutesPerGame;      // mpg
-    private float foulsPerGame;        // fpg
-    private float foulsDrawnPerGame;   // fapg
+    private float fieldGoalPerGame;        // fpg
+    private float fieldGoalAttemptPerGame; // fapg
     private float threePointMadePerGame;     // 3pg
     private float threePointAttemptedPerGame;// 3apg
     private float twoPointMadePerGame;       // 2pg

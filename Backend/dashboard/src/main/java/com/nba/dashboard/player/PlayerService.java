@@ -90,6 +90,7 @@ public class PlayerService {
                 .collect(Collectors.toList());
     }
 
+
     /**
      * @param season int
      *
@@ -99,6 +100,57 @@ public class PlayerService {
         return playerRepository.findBySeason(season)
                 .stream()
                 .sorted(Comparator.comparing(Player::getAssistsPerGame).reversed())
+                .collect(Collectors.toList());
+    }
+
+
+    /**
+     * @param season int
+     *
+     * @return The top 5 players with the highest avg rebound per game
+     * */
+    public List<Player> getTop5ReboundsPerGame(int season) {
+        return playerRepository.findBySeason(season)
+                .stream()
+                .sorted(Comparator.comparing(Player::getTotalReboundsPerGame).reversed())
+                .collect(Collectors.toList());
+    }
+
+
+    /**
+     * @param season int
+     *
+     * @return The top 5 players with the highest avg steal per game
+     * */
+    public List<Player> getTop5StealsPerGame(int season) {
+        return playerRepository.findBySeason(season)
+                .stream()
+                .sorted(Comparator.comparing(Player::getStealsPerGame).reversed())
+                .collect(Collectors.toList());
+    }
+
+
+    /**
+     * @param season int
+     *
+     * @return The top 5 players with the highest avg block per game
+     * */
+    public List<Player> getTop5BlocksPerGame(int season) {
+        return playerRepository.findBySeason(season)
+                .stream()
+                .sorted(Comparator.comparing(Player::getBlocksPerGame).reversed())
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @param season int
+     *
+     * @return The top 5 players with the highest avg 3 point made per game
+     * */
+    public List<Player> getTop5ThreePointMadePerGame(int season) {
+        return playerRepository.findBySeason(season)
+                .stream()
+                .sorted(Comparator.comparing(Player::getThreePointMadePerGame).reversed())
                 .collect(Collectors.toList());
     }
 }

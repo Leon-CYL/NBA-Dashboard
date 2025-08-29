@@ -6,3 +6,5 @@
 
 # Maven build output
 target/
+
+application.properties

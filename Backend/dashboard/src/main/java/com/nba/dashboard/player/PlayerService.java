@@ -30,7 +30,7 @@ public class PlayerService {
         // Can replace stream with parallelStream for parallel filtering
         return playerRepository.findAll()
                 .stream()
-                .filter(player -> playerId.equals(player.getPlayer_id()))
+                .filter(player -> playerId.equals(player.getPlayerRef()))
                 .collect(Collectors.toList());
     }
 
@@ -42,7 +42,7 @@ public class PlayerService {
     public List<Player> getPlayerByName(String name) {
         return playerRepository.findAll()
                 .stream()
-                .filter(player -> name.equals(player.getName()))
+                .filter(player -> name.equals(player.getPlayer()))
                 .collect(Collectors.toList());
     }
 
@@ -52,11 +52,11 @@ public class PlayerService {
      *
      * @return A Player with different season year base on the player's name
      * */
-    public List<Player> getPlayerByIdAndName(String name,String playerId) {
+    public List<Player> getPlayerByIdAndName(String name, String playerId) {
         return playerRepository.findAll()
                 .stream()
-                .filter(player -> name.equals(player.getName())
-                        && playerId.equals(player.getPlayer_id()))
+                .filter(player -> name.equals(player.getPlayer())
+                        && playerId.equals(player.getPlayerRef()))
                 .collect(Collectors.toList());
     }
 
@@ -70,7 +70,21 @@ public class PlayerService {
     public List<Player> getPlayerByTeamAndSeason(String team, int season) {
         return playerRepository.findAll()
                 .stream()
-                .filter(player -> team.equals(player.getTeam()) && season == player.getSeason())
+                .filter(player -> team.equals(player.getTeamCode()) && season == player.getSeason())
+                .sorted(Comparator.comparing(Player::getPointsPerGame).reversed())
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @param season int
+     * @param pos String
+     *
+     * @return A list fo Players base on the Pos in that year
+     * */
+    public List<Player> getPlayerBySeasonAndPos(int season, String pos) {
+        return playerRepository.findBySeason(season)
+                .stream()
+                .filter(player -> season == player.getSeason() && pos.equals(player.getPosition()))
                 .sorted(Comparator.comparing(Player::getPointsPerGame).reversed())
                 .collect(Collectors.toList());
     }
@@ -150,7 +164,7 @@ public class PlayerService {
     public List<Player> getTop5ThreePointMadePerGame(int season) {
         return playerRepository.findBySeason(season)
                 .stream()
-                .sorted(Comparator.comparing(Player::getThreePointMadePerGame).reversed())
+                .sorted(Comparator.comparing(Player::getThreesMadePerGame).reversed())
                 .collect(Collectors.toList());
     }
 }

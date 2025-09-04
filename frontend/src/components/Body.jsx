@@ -18,27 +18,21 @@ const Body = () => {
       <div className="text-center z-10 px-8">
         {/* Bouncing Basketball */}
         <div className="mb-8 flex justify-center">
-          <i className="fa-solid fa-basketball text-8xl text-orange-500 animate-bounce drop-shadow-lg"></i>
+          <i className="fa-solid fa-basketball text-9xl text-orange-500 animate-bounce drop-shadow-lg"></i>
         </div>
 
         {/* Welcome Text */}
-        <h1 className="text-6xl md:text-7xl font-bold mb-4 drop-shadow-lg">
+        <h1 className="text-6xl md:text-7xl font-bold mb-4 drop-shadow-lg animate-fade-in">
           Welcome to
         </h1>
-        <h2 className="text-5xl md:text-6xl font-bold text-orange-300 drop-shadow-lg">
+        <h2 className="text-5xl md:text-6xl font-bold text-orange-300 drop-shadow-lg mb-6 animate-fade-in-delay">
           NBA Dashboard!
         </h2>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl mt-6 opacity-90 max-w-2xl mx-auto">
-          Your ultimate destination for basketball statistics, team analytics,
-          and player insights
+        <p className="text-xl md:text-2xl mt-6 opacity-90 max-w-2xl mx-auto font-semibold text-teal-100 animate-fade-in-delay-2">
+          Your Ultimate Basketball Analytics Hub
         </p>
-
-        {/* Call to Action Button */}
-        <button className="mt-8 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
-          Explore Dashboard
-        </button>
       </div>
     </div>
   );

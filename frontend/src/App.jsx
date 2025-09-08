@@ -3,6 +3,8 @@ import "./index.css";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import TeamBody from "./components/TeamBody";
+import LeaderboardBody from "./components/LeaderboardBody";
+import PositionBody from "./components/PositionBody";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -14,17 +16,9 @@ function App() {
       case "teams":
         return <TeamBody />;
       case "leaderboard":
-        return (
-          <div className="min-h-screen bg-gray-100 p-8">
-            <h1 className="text-4xl font-bold text-center">Leaderboard Page</h1>
-          </div>
-        );
+        return <LeaderboardBody />;
       case "position":
-        return (
-          <div className="min-h-screen bg-gray-100 p-8">
-            <h1 className="text-4xl font-bold text-center">Position Page</h1>
-          </div>
-        );
+        return <PositionBody />;
       default:
         return <Body />;
     }

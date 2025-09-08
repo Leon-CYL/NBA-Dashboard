@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./index.css";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import TeamBody from "./components/TeamBody";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -11,11 +12,7 @@ function App() {
       case "home":
         return <Body />;
       case "teams":
-        return (
-          <div className="min-h-screen bg-gray-100 p-8">
-            <h1 className="text-4xl font-bold text-center">Teams Page</h1>
-          </div>
-        );
+        return <TeamBody />;
       case "leaderboard":
         return (
           <div className="min-h-screen bg-gray-100 p-8">

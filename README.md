@@ -2,7 +2,8 @@
 
 ## Project Overview
 
-A comprehensive fullstack web application that provides NBA player statistics and team analysis. Built with React frontend and Spring Boot backend, this dashboard offers interactive data visualization and filtering capabilities for basketball enthusiasts, analysts, and team management.
+The NBA Dashboard is a fullstack web application that provides advanced NBA player statistics and team analysis. Built with React frontend and Spring Boot backend, this dashboard offers interactive data visualization and filtering capabilities for basketball enthusiasts, analysts, and team management. The project features a robust data pipeline that processes over 18,000 player records from multiple seasons, implementing sophisticated data cleaning techniques including league filtering, position validation, team standardization, and comprehensive per-game statistics calculation. The cleaned dataset includes detailed player metrics across 46+ statistical categories, enabling deep analytical insights into player performance trends, team compositions, and seasonal comparisons. The application demonstrates modern software engineering practices with containerized deployment, RESTful API design, and responsive user interface development.
+
 
 ## NBA Dashboard Visuallization
 
@@ -33,12 +34,7 @@ A comprehensive fullstack web application that provides NBA player statistics an
 
 ## Development Setup
 
-### **Prerequisites**
-
-- Docker and Docker Compose
-- Git
-
-### **Docker Setup (Recommended)**
+### **Docker Setup**
 
 The easiest way to run the NBA Dashboard is using Docker containers. This ensures consistent environments across different machines.
 

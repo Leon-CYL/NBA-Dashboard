@@ -1,52 +1,61 @@
-# NBA Dashboard
+# NBA Dashboard - Full-Stack Basketball Analytics Platform
 
-## Dataset:
+## Project Overview
 
-`Player.csv`: [link](https://www.kaggle.com/datasets/sumitrodatta/nba-aba-baa-stats?select=Player+Totals.csv)
+A comprehensive fullstack web application that provides NBA player statistics and team analysis. Built with React frontend and Spring Boot backend, this dashboard offers interactive data visualization and filtering capabilities for basketball enthusiasts, analysts, and team management.
 
-## Spring Boot Dependencies:
+## NBA Dashboard Visuallization
 
-- Spring Web
-- Spring Data JPA
-- Postgres SQL Driver
-- Spring Boot Actuator
-- Lombok
-- Validation
+- Home page
+![Home](image/home.png)
 
-## React.js + Tailwind CSS Frontend Setup
+- Team page
+![Team](image/team.png)
 
-### 1. Create React Project with Vite
+- Leaderboard Page
+![Leaderboard](image/leaderboard.png)
+
+- Position Page
+![Position](image/position.png)
+
+## API Endpoints
+
+### **Player Data**
+
+- `GET /nba` - Retrieve players with optional filters (team, season, position)
+- `GET /nba/leaderboard/points` - Top scorers by season
+- `GET /nba/leaderboard/assists` - Top assist leaders
+- `GET /nba/leaderboard/rebounds` - Top rebounders
+- `GET /nba/leaderboard/steals` - Top steal leaders
+- `GET /nba/leaderboard/blocks` - Top shot blockers
+- `GET /nba/leaderboard/threepoints` - Top 3-point shooters
+- `GET /nba/leaderboard/all` - Complete leaderboard data
+
+
+## Development Setup
+
+### **Prerequisites**
+
+- Java 21+
+- Node.js 18+
+- PostgreSQL 17+
+- Maven 3.6+
+
+### **Backend Setup**
 
 ```bash
-npm create vite@latest frontend -- --template react
+cd Backend/dashboard
+./mvnw spring-boot:run
+```
+
+### **Frontend Setup**
+
+```bash
 cd frontend
 npm install
+npm run dev
 ```
 
-### 2. Install Tailwind CSS
+---
 
-```bash
-npm install -D tailwindcss@^3.4.0 postcss autoprefixer
-npx tailwindcss init -p
-```
-
-### 3. Configure Tailwind CSS
-
-Update `tailwind.config.js`:
-
-```javascript
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
-
-```bash
-npm run dec
-```
-
-> http://localhost:5173/
+**Technologies Used**: Docker, React, Spring Boot, PostgreSQL, JavaScript, Java, Tailwind CSS, Python, Data Analysis

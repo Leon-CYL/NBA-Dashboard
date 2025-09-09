@@ -9,10 +9,10 @@ services:
       POSTGRES_USER: nba_user
       POSTGRES_PASSWORD: nba_pass
     ports:
-      - "3344:5432"             # host 3344 -> container 5432
+      - "3344:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./Data:/data            # optional: mount your CSVs for easy \copy
+      - ./Data:/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U nba_user -d nba"]
       interval: 10s
@@ -20,7 +20,7 @@ services:
       retries: 5
 
   backend:
-    build: ./Backend
+    build: ./Backend/dashboard
     container_name: nba_backend
     environment:
       # Inside Docker, reach Postgres by its service name "db" on 5432
@@ -35,12 +35,12 @@ services:
       - "8080:8080"
 
   frontend:
-    build: ./Frontend
+    build: ./frontend
     container_name: nba_frontend
     depends_on:
       - backend
     ports:
-      - "3000:80"   # serves built React app via nginx on port 80
+      - "3000:80"
 
 volumes:
   pgdata:

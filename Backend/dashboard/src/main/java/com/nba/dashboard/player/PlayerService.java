@@ -29,7 +29,7 @@ public class PlayerService {
         // Can replace stream with parallelStream for parallel filtering
         return playerRepository.findAll()
                 .stream()
-                .filter(player -> playerId.equals(player.getPlayerRef()))
+                .filter(player -> playerId.equals(player.getPlayerId()))
                 .collect(Collectors.toList());
     }
 
@@ -55,7 +55,7 @@ public class PlayerService {
         return playerRepository.findAll()
                 .stream()
                 .filter(player -> name.equals(player.getPlayer())
-                        && playerId.equals(player.getPlayerRef()))
+                        && playerId.equals(player.getPlayerId()))
                 .collect(Collectors.toList());
     }
 
